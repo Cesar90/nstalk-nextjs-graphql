@@ -1,9 +1,10 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+// import { render, screen, waitFor } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Router from 'next/router' // We will MOCK THIS
+// import Router from 'next/router' // We will MOCK THIS
 import Layout from '../Layout'
-import { isLoggedInVar } from '../../lib/withData'
+// import { isLoggedInVar } from '../../lib/withData'
 
 // jest.mock('@apollo/client', () => ({
 //   makeVar: () => {
