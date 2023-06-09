@@ -1,7 +1,7 @@
-import { ApolloClient, ApolloLink, InMemoryCache, NormalizedCacheObject, createHttpLink, makeVar } from '@apollo/client';
+import { ApolloClient, ApolloLink, InMemoryCache, createHttpLink, makeVar } from '@apollo/client';
 import { onError } from '@apollo/link-error';
 import { getDataFromTree } from '@apollo/client/react/ssr';
-import { createUploadLink } from 'apollo-upload-client';
+// import { createUploadLink } from 'apollo-upload-client';
 import withApollo from 'next-with-apollo';
 import { setContext } from '@apollo/client/link/context';
 import { endpoint, prodEndpoint } from '../config';
@@ -17,25 +17,27 @@ export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 
 
-interface IProps{
-  // headers: Record<string, string> | undefined
-  headers: Record<string, string>
-  initialState: NormalizedCacheObject
-}
+// interface IProps{
+//   // headers: Record<string, string> | undefined
+//   headers: Record<string, string>
+//   initialState: NormalizedCacheObject
+// }
 
-interface IPoliceAllProducts{
-  args:{
-    skip: number
-    first: number
-  },
-  cache: InMemoryCache
-}
+// interface IPoliceAllProducts{
+//   args:{
+//     skip: number
+//     first: number
+//   },
+//   cache: InMemoryCache
+// }
 
-type IHeader = Record<string, string>
+// type IHeader = Record<string, string>
 
 export default withApollo(({ ctx, headers, initialState }) => {
   // this uses apollo-link-http under the hood, so all the options here come from that package
-  const headers2 = { ...headers} as IHeader;
+  console.log(ctx);
+  console.log(headers);
+  // const headers2 = { ...headers} as IHeader;
 
   const httpLink = createHttpLink({
     uri:
@@ -54,14 +56,14 @@ export default withApollo(({ ctx, headers, initialState }) => {
   });
 
   // headers = headers as undefined
-  const uploadLink = (createUploadLink({
-    uri: `${process.env.NODE_ENV}` === 'development' ? endpoint : prodEndpoint,
-    // fetchOptions: {
-    //   credentials: 'include',
-    // },
-    // pass the headers along from this request. This enables SSR with logged in state
-    headers: headers2,
-  }) as unknown) as ApolloLink;
+  // const uploadLink = (createUploadLink({
+  //   uri: `${process.env.NODE_ENV}` === 'development' ? endpoint : prodEndpoint,
+  //   // fetchOptions: {
+  //   //   credentials: 'include',
+  //   // },
+  //   // pass the headers along from this request. This enables SSR with logged in state
+  //   headers: headers2,
+  // }) as unknown) as ApolloLink;
 
   return new ApolloClient({
     link: ApolloLink.from([

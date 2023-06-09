@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "lint": "next lint",
     "start": "next start -p ${PORT:=3000}",
     "test": "NODE_ENV=test jest --watchAll --verbose",
     "build:css": "postcss assets/main.css -o assets/main_browser.css",

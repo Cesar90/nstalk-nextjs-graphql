@@ -9,7 +9,7 @@ export default function useForm<T>(initial:T) {
   useEffect(() => {
     // This function runs when the things we are watching change
     setInputs(initial);
-  }, [initialValues]);
+  }, [initialValues, initial]);
 
   // {
   //   name: 'wes',
