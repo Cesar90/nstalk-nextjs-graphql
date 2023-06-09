@@ -40,7 +40,8 @@ jest.mock('next/router', () => ({
 
 describe('<Layout>', () => {
   it('renders OK', async () => {
-    const { container } = render(<Layout>test</Layout>)
+    render(<Layout>test</Layout>)
+    // const { container } = render(<Layout>test</Layout>)
     // debug();
     // await waitFor(() => {
     //   isLoggedInVar(true)
