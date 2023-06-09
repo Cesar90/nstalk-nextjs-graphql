@@ -8,7 +8,7 @@ export interface RestaurantPageQuery extends ParsedUrlQuery {
   id: string;
 }
 
-const createdish = () => {
+const Createdish = () => {
   const router = useRouter();
   const query = router.query as RestaurantPageQuery;
   const id = parseInt(query.id);
@@ -19,4 +19,4 @@ const createdish = () => {
   )
 }
 
-export default createdish
+export default Createdish
