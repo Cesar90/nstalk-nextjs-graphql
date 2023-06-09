@@ -45,7 +45,7 @@ export default withApollo(({ ctx, headers, initialState }) => {
         ? `${process.env.NEXT_PUBLIC_DOMAIN}`
         : `${process.env.NEXT_PUBLIC_DOMAIN}`,
   });
-
+  
   const authLink = setContext((_, { headers }) => {
     return {
       headers: {
