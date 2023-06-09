@@ -4,9 +4,7 @@ import { getDataFromTree } from '@apollo/client/react/ssr';
 // import { createUploadLink } from 'apollo-upload-client';
 import withApollo from 'next-with-apollo';
 import { setContext } from '@apollo/client/link/context';
-/* eslint-disable */
 import { endpoint, prodEndpoint } from '../config';
-/* eslint-enable */
 import { LOCALSTORAGE_TOKEN } from './constants';
 import { isBrowser } from './helpers';
 // import { PAGINATION_QUERY } from '@components/Pagination';
@@ -31,6 +29,7 @@ export const authTokenVar = makeVar(token);
 //   },
 //   cache: InMemoryCache
 // }
+
 // type IHeader = Record<string, string>
 /* eslint-disable */
 export default withApollo(({ ctx, headers, initialState }) => {
@@ -43,8 +42,8 @@ export default withApollo(({ ctx, headers, initialState }) => {
   const httpLink = createHttpLink({
     uri:
       process.env.NODE_ENV === 'production'
-        ? `${process.env.NEXT_PUBLIC_DOMAIN}`
-        : `${process.env.NEXT_PUBLIC_DOMAIN}`,
+        ? prodEndpoint
+        : endpoint,
   });
 
   const authLink = setContext((_, { headers }) => {
