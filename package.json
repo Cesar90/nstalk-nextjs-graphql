@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p ${PORT:=3000}",
     "test": "NODE_ENV=test jest --watchAll --verbose",
     "build:css": "postcss assets/main.css -o assets/main_browser.css",
     "codegen:generate": "npx apollo client:codegen --target=typescript --outputFlat",
