@@ -33,7 +33,7 @@ export const authTokenVar = makeVar(token);
 // type IHeader = Record<string, string>
 /* eslint-disable */
 export default withApollo(({ ctx, headers, initialState }) => {
-/* eslint-enable */
+  /* eslint-enable */
   // this uses apollo-link-http under the hood, so all the options here come from that package
   // console.log(ctx);
   // console.log(headers);
