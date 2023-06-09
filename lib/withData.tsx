@@ -29,7 +29,6 @@ export const authTokenVar = makeVar(token);
 //   },
 //   cache: InMemoryCache
 // }
-
 // type IHeader = Record<string, string>
 /* eslint-disable */
 export default withApollo(({ ctx, headers, initialState }) => {
