@@ -16,7 +16,6 @@ if(isBrowser()){
 export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 
-
 // interface IProps{
 //   // headers: Record<string, string> | undefined
 //   headers: Record<string, string>
