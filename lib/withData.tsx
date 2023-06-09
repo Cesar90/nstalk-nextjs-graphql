@@ -4,7 +4,9 @@ import { getDataFromTree } from '@apollo/client/react/ssr';
 // import { createUploadLink } from 'apollo-upload-client';
 import withApollo from 'next-with-apollo';
 import { setContext } from '@apollo/client/link/context';
-// import { endpoint, prodEndpoint } from '../config';
+/* eslint-disable */
+import { endpoint, prodEndpoint } from '../config';
+/* eslint-enable */
 import { LOCALSTORAGE_TOKEN } from './constants';
 import { isBrowser } from './helpers';
 // import { PAGINATION_QUERY } from '@components/Pagination';
