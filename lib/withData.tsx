@@ -42,8 +42,8 @@ export default withApollo(({ ctx, headers, initialState }) => {
   const httpLink = createHttpLink({
     uri:
       process.env.NODE_ENV === 'production'
-        ? `${process.env.NEXT_PUBLIC_DOMAIN}`
-        : `${process.env.NEXT_PUBLIC_DOMAIN}`,
+        ? `${process.env.NEXT_PUBLIC_DOMAIN}/graphql`
+        : `${process.env.NEXT_PUBLIC_DOMAIN}/graphql`,
   });
   
   const authLink = setContext((_, { headers }) => {
