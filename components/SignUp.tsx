@@ -29,13 +29,12 @@ interface ICreateAccountForm {
 }
 
 const SignUp = () => {
-  const { register, getValues, errors, handleSubmit, formState } =
-    useForm<ICreateAccountForm>({
-      mode: 'onChange',
-      defaultValues: {
-        role: UserRole.Client,
-      },
-    })
+  const { register, getValues, errors, handleSubmit, formState } = useForm<ICreateAccountForm>({
+    mode: 'onChange',
+    defaultValues: {
+      role: UserRole.Client,
+    },
+  })
 
   const onCompleted = (data: createAccountMutation) => {
     const {

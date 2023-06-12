@@ -26,7 +26,7 @@ interface IProps {
 }
 
 const SingleRestaurant: FC<IProps> = ({ id }) => {
-  const {  data } = useQuery<restaurant, restaurantVariables>(RESTAURANT_QUERY, {
+  const { data } = useQuery<restaurant, restaurantVariables>(RESTAURANT_QUERY, {
     variables: {
       input: {
         restaurantId: id,

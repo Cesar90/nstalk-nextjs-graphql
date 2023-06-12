@@ -14,9 +14,7 @@ describe('<Button />', () => {
     getByText('Loading...')
   })
   it('should display loading', () => {
-    const {  getByText } = render(
-      <Button actionText={'test'} canClick={false} loading={true} />,
-    )
+    const { getByText } = render(<Button actionText={'test'} canClick={false} loading={true} />)
     getByText('Loading...')
     // expect(container.firstChild).toHaveClass("pointer-events-none")
   })

@@ -60,7 +60,12 @@ const MyRestaurant: FC<IProps> = ({ id }) => {
         ) : (
           <div className='grid mt-6 md:grid-cols-3 gap-x-5 gap-y-10'>
             {data?.myRestaurant.restaurant?.menu?.map((dish) => (
-              <Dish key={dish.id} description={dish.description} name={dish.name} price={dish.price} />
+              <Dish
+                key={dish.id}
+                description={dish.description}
+                name={dish.name}
+                price={dish.price}
+              />
             ))}
           </div>
         )}

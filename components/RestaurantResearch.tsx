@@ -22,14 +22,13 @@ const SEARCH_RESTAURANT = gql`
 
 const RestaurantResearch = () => {
   const router = useRouter()
-  const [queryReadyToStart] = useLazyQuery<
-    searchRestaurant,
-    searchRestaurantVariables
-  >(SEARCH_RESTAURANT)
+  const [queryReadyToStart] = useLazyQuery<searchRestaurant, searchRestaurantVariables>(
+    SEARCH_RESTAURANT,
+  )
   useEffect(() => {
     const [_, query] = location.search.split('?term=')
     if (!query) {
-      console.log(_);
+      console.log(_)
       router.replace('/')
     }
     queryReadyToStart({

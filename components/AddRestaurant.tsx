@@ -1,12 +1,29 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import Router from 'next/router'
-import { gql, useApolloClient, useMutation } from '@apollo/client'
+import { gql, useApolloClient, useMutation, useQuery } from '@apollo/client'
 import { useForm } from 'react-hook-form'
 import { createRestaurant, createRestaurantVariables } from '__generated__/createRestaurant'
+import { allCategoriesQuery } from '__generated__/allCategoriesQuery'
 import { Button } from './Button'
 import { FormError } from './form-error'
 import { MY_RESTAURANTS_QUERY } from './MyRestaurants'
+
+const CATEGORIES_QUERY = gql`
+  query allCategoriesQuery {
+    allCategories {
+      ok
+      error
+      categories {
+        id
+        name
+        coverImage
+        slug
+        restaurantCount
+      }
+    }
+  }
+`
 
 export const CREATE_RESTAURANT_MUTATION = gql`
   mutation createRestaurant($input: CreateRestaurantInput!) {
@@ -36,6 +53,8 @@ const AddRestaurant = () => {
   const { register, getValues, formState, handleSubmit } = useForm<IFormProps>({
     mode: 'onChange',
   })
+
+  const { data: categoriesData } = useQuery<allCategoriesQuery>(CATEGORIES_QUERY)
 
   const onCompleted = (data: createRestaurant) => {
     const {
@@ -113,7 +132,7 @@ const AddRestaurant = () => {
       })
       setUploading(false)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
@@ -140,13 +159,28 @@ const AddRestaurant = () => {
           ref={register({ required: 'Address is required.' })}
           type='text'
         />
-        <input
+        {/* <input
           className='input'
           name='categoryName'
           placeholder='Category Name'
           ref={register({ required: 'Category Name is required.' })}
           type='text'
-        />
+        /> */}
+
+        <select
+          className='input'
+          name='categoryName'
+          ref={register({ required: 'Category Name is required.' })}
+        >
+          <option value=''>Please choose&hellip;</option>
+          {categoriesData?.allCategories.categories?.map((category) => {
+            return (
+              <option key={category.id} value={category.name}>
+                {category.name}
+              </option>
+            )
+          })}
+        </select>
         <div>
           <input accept='image/*' name='file' ref={register({ required: true })} type='file' />
         </div>
